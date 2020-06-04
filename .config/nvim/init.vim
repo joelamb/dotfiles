@@ -26,12 +26,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'junegunn/fzf.vim'
-Plug 'craigemery/vim-autotag'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim'
@@ -39,42 +36,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'Raimondi/delimitMate'
 Plug 'Yggdroot/indentLine'
 Plug 'mattn/emmet-vim'
-Plug 'avelino/vim-bootstrap-updater'
 Plug 'davidgranstrom/scnvim'
 Plug 'tidalcycles/vim-tidal'
-
-let g:make = 'gmake'
-if exists('make')
-        let g:make = 'make'
-endif
-Plug 'Shougo/vimproc.vim', {'do': g:make}
-
-if v:version >= 703
-  Plug 'Shougo/vimshell.vim'
-endif
-
-Plug 'honza/vim-snippets'
-
-"" Color
-Plug 'tomasr/molokai'
-
-"*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
-
-" javascript
-"" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
 
-"*****************************************************************************
-"*****************************************************************************
-
-"" Include user's extra bundle
-" if filereadable(expand("~/.config/nvimrc.local.bundles"))
-  " source ~/.config/nvimrc.local.bundles
+" let g:make = 'gmake'
+" if exists('make')
+"   let g:make = 'make'
 " endif
 
 call plug#end()
@@ -85,6 +55,10 @@ filetype plugin indent on
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
+set nobackup
+set nowritebackup
+set updatetime=300
+
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -105,6 +79,9 @@ set shiftround
 nnoremap <space> <Nop>
 let mapleader=' '
 
+"" Emmet leader
+let g:user_emmet_leader_key='<C-Z>'
+
 "" Enable hidden buffers
 set hidden
 
@@ -114,12 +91,15 @@ set incsearch
 set ignorecase
 set smartcase
 
-"" Emmet 
-" let g:user_emmet_mode='n' "only enable in normal mode
-" let g:user_emmet_leader_key='C-z'
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
 
-" Grep with AG
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" bind K to grep word under cursor
+nnoremap K :grep "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 nnoremap <leader>f :Files<CR>
 
 " fzf - fuzzy finder
@@ -131,21 +111,16 @@ let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycach
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
+let NERDTreeShowHidden=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-noremap <F3> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
 
-"*****************************************************************************
-"" Visual Settings
-"*****************************************************************************
-syntax on
-set ruler
+"" Workspace formating
 set relativenumber
 set number
 
@@ -155,10 +130,6 @@ set scrolloff=3
 
 "" Status bar
 set laststatus=2
-
-"" Use modeline overrides
-set modeline
-set modelines=10
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
@@ -231,11 +202,14 @@ augroup vimrc-wrapping
 augroup END
 
 "" make/cmake
-augroup vimrc-make-cmake
-  autocmd!
-  autocmd FileType make setlocal noexpandtab
-  autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
-augroup END
+" augroup vimrc-make-cmake
+"   autocmd!
+"   autocmd FileType make setlocal noexpandtab
+"   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
+" augroup END
+
+"" Tidal comments
+autocmd FileType tidal setlocal commentstring=--\ %s
 
 set autoread
 
@@ -245,6 +219,8 @@ set autoread
 "" Quick escape
 inoremap jk <Esc>
 
+"" Blank line and no insert
+noremap <leader> o o<Esc>
 "" Disable arrow keys to break the habit
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -306,6 +282,7 @@ nnoremap <leader>o :.Gbrowse<CR>
 "" Tidal mappings
 let g:tidal_no_mappings=1
 nmap <C-e> <Plug>TidalParagraphSend
+imap <C-e> <Esc><Plug>TidalParagraphSend
 let maplocalleader=','
 nnoremap <localleader>h :TidalHush<cr>
 
@@ -380,22 +357,8 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-set t_Co=16
-syntax enable                   "Use syntax highlighting
-let g:airline#extensions#tabline#enabled = 1
-
-"" set default identation
-" set tabstop=4
-" set shiftwidth=4
-" set expandtab
-" set laststatus=2
-
-"" set shortcut for open Nerdtree
-map <C-n> :NERDTreeToggle<CR>
+" let g:airline#extensions#tabline#enabled = 1
 
 "" color scheme
 syntax on
 colorscheme gruvbox
-
-"" Make Nerdtree show .files by default
-let NERDTreeShowHidden=1
