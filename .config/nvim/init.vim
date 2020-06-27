@@ -25,7 +25,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -37,15 +36,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Yggdroot/indentLine'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 Plug 'davidgranstrom/scnvim'
 Plug 'tidalcycles/vim-tidal'
 Plug 'jelera/vim-javascript-syntax'
-
-" let g:make = 'gmake'
-" if exists('make')
-"   let g:make = 'make'
-" endif
 
 call plug#end()
 
@@ -85,36 +80,39 @@ let g:user_emmet_leader_key='<C-Z>'
 "" Enable hidden buffers
 set hidden
 
+"" coc
+let g:coc_node_path = $HOME.'/.nvm/versions/node/v10.20.1/bin/node'
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+
 "" Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" The Silver Searcher
+" The Silver Searcher use ag over grep
 if executable('ag')
-  " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 " bind K to grep word under cursor
 nnoremap K :grep "\b<C-R><C-W>\b"<CR>:cw<CR>
 
+" Files
 nnoremap <leader>f :Files<CR>
 
 " fzf - fuzzy finder
 set rtp+=/usr/local/opt/fzf
 
-"" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeWinSize = 50
-let NERDTreeShowHidden=1
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-map <C-n> :NERDTreeToggle<CR>
+" netrw - who needs NERDTree?
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_winsize=20
+let g:netrw_fastbrowse=0
+
+" toggle left explorer
+nnoremap <C-n> :Lexplore<CR>
 
 set fileformats=unix,dos,mac
 set showcmd
@@ -248,13 +246,7 @@ noremap <leader>gsh :Gpush<CR>
 noremap <leader>gll :Gpull<CR>
 noremap <leader>gs :Gstatus<CR>
 noremap <leader>gb :Gblame<CR>
-noremap <leader>gd :Gvdiff<CR>
-noremap <leader>gr :Gremove<CR>
-
-"" Tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-nnoremap <silent> <S-t> :tabnew<CR>
+noremap <leader>gvd :Gvdiff<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
