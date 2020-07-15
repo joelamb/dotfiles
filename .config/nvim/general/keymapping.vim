@@ -38,3 +38,8 @@ noremap <leader>w :bn<CR>
 "" closing buffers
 noremap <leader>c :bd<CR>
 
+"" coc
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nmap <space>e :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif

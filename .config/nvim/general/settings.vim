@@ -1,8 +1,6 @@
 filetype plugin indent on
 syntax enable                           " Enables syntax highlighing
 
-let mapleader="\'"
-
 "set autochdir                           " Your working directory will always be the same as your working directory
 set autoindent                          " Good auto indent
 set autoread                            " Update buffer changed outside neovim
@@ -59,7 +57,14 @@ augroup vimrc-remember-cursor-position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
-"" grep with Silver Searcher
+" remember folds
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
+" grep with Silver Searcher
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif

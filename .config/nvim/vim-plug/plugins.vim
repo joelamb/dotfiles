@@ -14,13 +14,13 @@ set rtp+=/usr/local/opt/fzf
 
 "" git
 Plug 'tpope/vim-fugitive'
-noremap <leader>ga :Gwrite<CR>
-noremap <leader>gc :Gcommit<CR>
-noremap <leader>gsh :Gpush<CR>
-noremap <leader>gll :Gpull<CR>
-noremap <leader>gs :Gstatus<CR>
-noremap <leader>gb :Gblame<CR>
-noremap <leader>gvd :Gvdiff<CR>
+nnoremap <leader>ga :Gwrite<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gsh :Gpush<CR>
+nnoremap <leader>gll :Gpull<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gvd :Gvdiff<CR>
 
 "" theme
 Plug 'morhetz/gruvbox'
