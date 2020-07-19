@@ -45,7 +45,13 @@ set tabstop=2                           " Insert 2 spaces for a tab
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set updatetime=300                      " Faster completion
 
-"" do syntax highlight syncing from start
+augroup vimrc-custom-filetypes
+  autocmd!
+  autocmd BufNewFile,BufRead *.hbs setfiletype handlebars
+  autocmd BufNewFile,BufRead *.tsx,*.jsx setfiletype typescript.tsx
+  autocmd FileType javascript setlocal foldmethod=syntax"" do syntax highlight syncing from start
+augroup END
+
 augroup vimrc-sync-fromstart
   autocmd!
   autocmd BufEnter * :syntax sync fromstart
@@ -58,11 +64,11 @@ augroup vimrc-remember-cursor-position
 augroup END
 
 " remember folds
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
-augroup END
+" augroup vimrc-remember-folds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent! loadview
+" augroup END
 
 " grep with Silver Searcher
 if executable('ag')
