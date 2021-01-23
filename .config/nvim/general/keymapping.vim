@@ -1,15 +1,8 @@
-
 "" set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
 "" clear search highlight
 nnoremap <silent> <leader><space> :noh<cr>
-
-"" bind K to grep word under cursor
-nnoremap K :grep "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-"" fzf - fuzzy finder for files
-nnoremap <leader>f :Files<CR>
 
 "" quick escape
 inoremap jk <Esc>
@@ -31,4 +24,3 @@ noremap <leader>w :bn<CR>
 
 "" closing buffers
 noremap <leader>c :bd<CR>
-

@@ -92,6 +92,7 @@ alias td='todo.sh'
 alias nv='nvim'
 alias dotfiles='/usr/bin/git --git-dir=/Users/joelamb/.dotfiles/ --work-tree=/Users/joelamb'
 
+export FZF_DEFAULT_OPTS='--layout=reverse'
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion

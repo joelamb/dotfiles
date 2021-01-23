@@ -3,12 +3,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 "" fuzzy find
 Plug 'junegunn/fzf.vim'
 set rtp+=/usr/local/opt/fzf
+let g:fzf_layout = { 'window': { 'width': 0.85, 'height': 0.8 } }
+
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
 "" searching
 Plug 'dyng/ctrlsf.vim'
+nnoremap <C-F>t :CtrlSFToggle<CR>
+nmap K <Plug>CtrlSFCwordPath<CR>
 
 "" file explorer
 Plug 'scrooloose/nerdtree'
+noremap <space>e :NERDTreeToggle<CR>
 
 "" git
 Plug 'tpope/vim-fugitive'

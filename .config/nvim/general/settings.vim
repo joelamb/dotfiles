@@ -1,7 +1,6 @@
 filetype plugin indent on
 syntax enable                           " Enables syntax highlighing
 
-set autochdir                           " Your working directory will always be the same as your working directory
 set autoindent                          " Good auto indent
 set autoread                            " Update buffer changed outside neovim
 set background=dark                     " tell vim what the background color looks like
