@@ -14,12 +14,6 @@ nnoremap <leader>f :Files<CR>
 "" quick escape
 inoremap jk <Esc>
 
-"" disable arrow keys to break the habit
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
 "" splitting windows
 noremap <leader>h :<C-u>split<CR>
 noremap <leader>v :<C-u>vsplit<CR>
@@ -38,8 +32,3 @@ noremap <leader>w :bn<CR>
 "" closing buffers
 noremap <leader>c :bd<CR>
 
-"" coc
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-nmap <space>e :CocCommand explorer<CR>
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif

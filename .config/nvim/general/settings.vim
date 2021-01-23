@@ -1,7 +1,7 @@
 filetype plugin indent on
 syntax enable                           " Enables syntax highlighing
 
-"set autochdir                           " Your working directory will always be the same as your working directory
+set autochdir                           " Your working directory will always be the same as your working directory
 set autoindent                          " Good auto indent
 set autoread                            " Update buffer changed outside neovim
 set background=dark                     " tell vim what the background color looks like
@@ -63,19 +63,9 @@ augroup vimrc-remember-cursor-position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
-" remember folds
-" augroup vimrc-remember-folds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent! loadview
-" augroup END
-
 " grep with Silver Searcher
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
-
-" You can't stop me
-" cmap w!! w !sudo tee %

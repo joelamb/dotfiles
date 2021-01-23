@@ -1,5 +1,5 @@
 set nocompatible
-noremap <unique> ' <NOP>
+noremap ' <NOP>
 let mapleader = "\'"
 let maplocalleader = "\'"
 
@@ -9,4 +9,3 @@ source $HOME/.config/nvim/general/status.vim
 source $HOME/.config/nvim/general/theme.vim
 source $HOME/.config/nvim/general/abbreviations.vim
 source $HOME/.config/nvim/general/keymapping.vim
-source $HOME/.config/nvim/coc/config.vim

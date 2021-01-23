@@ -1,16 +1,14 @@
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  "autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 "" fuzzy find
 Plug 'junegunn/fzf.vim'
 set rtp+=/usr/local/opt/fzf
+
+"" searching
+Plug 'dyng/ctrlsf.vim'
+
+"" file explorer
+Plug 'scrooloose/nerdtree'
 
 "" git
 Plug 'tpope/vim-fugitive'
@@ -37,11 +35,16 @@ Plug 'joukevandermaas/vim-ember-hbs'
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-Z>'
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
+Plug 'pechorin/any-jump.vim'
+
 "" workspace
+Plug 'mhinz/vim-startify'
+
+Plug 'szw/vim-maximizer'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
