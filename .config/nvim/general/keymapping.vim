@@ -4,6 +4,14 @@ nnoremap <leader>. :lcd %:p:h<CR>
 "" clear search highlight
 nnoremap <silent> <leader><space> :noh<cr>
 
+"" make j and k work normally for soft wrapped lines
+noremap <buffer> j gj
+noremap <buffer> k gk
+
+"" make the arrow keys work like TextMate in insert mode
+inoremap <down> <C-C>gja
+inoremap <up> <C-C>gka
+
 "" quick escape
 inoremap jk <Esc>
 
