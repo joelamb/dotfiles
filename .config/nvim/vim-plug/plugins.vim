@@ -1,7 +1,8 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 "" syntax
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  "recommended to update the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter'
+" {'do': ':TSUpdate'}  recommended to update the parsers on update
 
 "" fuzzy find
 " Plug 'junegunn/fzf.vim'
@@ -38,8 +39,8 @@ nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gsh :Gpush<CR>
 nnoremap <leader>gll :Gpull<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gvd :Gvdiff<CR>
 
 "" theme

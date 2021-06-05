@@ -56,7 +56,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
+plugins=(fzf)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -91,6 +91,8 @@ fi
 alias td='todo.sh'
 alias nv='nvim'
 alias dotfiles='/usr/bin/git --git-dir=/Users/joelamb/.dotfiles/ --work-tree=/Users/joelamb'
+
+alias gb='git branch | tee'
 
 export FZF_DEFAULT_OPTS='--layout=reverse'
 export NVM_DIR="$HOME/.nvm"
