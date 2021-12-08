@@ -1,8 +1,7 @@
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 "" syntax
-Plug 'nvim-treesitter/nvim-treesitter'
-" {'do': ':TSUpdate'}  recommended to update the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " recommended to update the parsers on update
 
 "" fuzzy find
 " Plug 'junegunn/fzf.vim'
@@ -21,10 +20,10 @@ nnoremap <leader>H :Telescope oldfiles<CR>
 nnoremap <leader>r :Telescope registers<CR>
 
 "" searching
-Plug 'dyng/ctrlsf.vim'
-nnoremap <leader>A :CtrlSFToggle<CR>
-nmap K <Plug>CtrlSFCwordPath -W<CR>
-nmap <leader>a :CtrlSFFocus<CR>
+" Plug 'dyng/ctrlsf.vim'
+" nnoremap <leader>A :CtrlSFToggle<CR>
+" nmap K <Plug>CtrlSFCwordPath -W<CR>
+" nmap <leader>a :CtrlSFFocus<CR>
 
 "" replacing the word under the cursor
 nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
@@ -63,8 +62,38 @@ Plug 'tpope/vim-commentary'
 
 Plug 'pechorin/any-jump.vim'
 
+"" svelte tooling
+Plug 'evanleck/vim-svelte'
+
+"" coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'codechips/coc-svelte', {'do': 'npm install'}
+
+" let g:coc_node_path = '$HOME/.nvm/versions/node/v12.16.3/bin/node'
+
+nmap ff  (coc-format-selected)
+nmap rn (coc-rename)
+nmap  gd (coc-definition)
+nmap  gy (coc-type-definition)
+nmap  gi (coc-implementation)
+nmap  gr (coc-references)
+
+set updatetime=300
+set shortmess+=c " don't give |ins-completion-menu| messages.
+
+" Use K to show documentation in preview window
+nnoremap  K :call show_documentation()
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 "" workspace
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 
 Plug 'szw/vim-maximizer'
 
