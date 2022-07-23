@@ -22,6 +22,10 @@ local options = {
 
 	-- Status line
 	laststatus = 0,
+  showmode = false,
+
+  -- Find the cursor
+  cursorline = true,
 
 	-- Scroll padding
 	scrolloff = 4,

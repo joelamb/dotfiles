@@ -19,6 +19,6 @@ vim.cmd [[
  augroup _tabline
   autocmd!
   autocmd InsertEnter * hi TabLineFill guibg=sandybrown
-  autocmd InsertLeave * hi TabLineFill guibg=black
+  autocmd InsertLeave * hi TabLineFill guibg=color15
 augroup end
 ]]

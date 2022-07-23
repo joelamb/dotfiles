@@ -159,6 +159,11 @@ _G.packer_plugins = {
     path = "/Users/joelamb/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["papercolor-theme"] = {
+    loaded = true,
+    path = "/Users/joelamb/.local/share/nvim/site/pack/packer/start/papercolor-theme",
+    url = "https://github.com/NLKNguyen/papercolor-theme"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/joelamb/.local/share/nvim/site/pack/packer/start/plenary.nvim",
@@ -183,11 +188,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/joelamb/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
-  },
-  ["vim-one"] = {
-    loaded = true,
-    path = "/Users/joelamb/.local/share/nvim/site/pack/packer/start/vim-one",
-    url = "https://github.com/rakr/vim-one"
   },
   ["which-key.nvim"] = {
     loaded = true,
