@@ -49,9 +49,8 @@ return packer.startup(function(use)
 	use("moll/vim-bbye") -- close buffer without closing window
 	use("folke/which-key.nvim") -- interactive cheatsheet
 	--use "morhetz/gruvbox" -- colortheme
-	--use("rakr/vim-one") -- alt colortheme
   use("NLKNguyen/papercolor-theme") -- colortheme
-	use("preservim/nerdcommenter") -- comments
+	use("terrortylor/nvim-comment") -- comments
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -79,6 +78,6 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- linting
 
 	use("ggandor/leap.nvim") -- better motion command
-  use("lewis6991/gitsigns.nvim")
+  use("lewis6991/gitsigns.nvim") -- git integration
 	--use "tpope/vim-repeat" -- extends dot repeat functionality
 end)

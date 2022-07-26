@@ -3,7 +3,7 @@ local colors = require('tabby.module.colors')
 local tab = require('tabby.tab')
 
 local hl_head = { fg = colors.black(), bg = colors.red(), style = 'italic' }
-local hl_tabline = 'TabLineSel'
+-- local hl_tabline = 'TabLineSel'
 local hl_tabline_sel = { fg = colors.black(), bg = colors.magenta(), style = 'bold' }
 local hl_tabline_fill = 'TabLineFill'
 
@@ -34,7 +34,7 @@ local tabline = {
     label = function(tabid)
       return {
         tab_label(tabid, true),
-        hl = hl_tabline_sel,
+        hl = 'TabLineSel',
       }
     end,
     right_sep = { ' ', hl = hl_tabline_fill },
@@ -43,7 +43,7 @@ local tabline = {
     label = function(tabid)
       return {
         tab_label(tabid),
-        hl = hl_tabline,
+        hl = 'TabLine',
       }
     end,
     right_sep = { ' ', hl = hl_tabline_fill },
@@ -52,7 +52,7 @@ local tabline = {
     label = function(winid)
       return {
         win_label(winid, true),
-        hl = hl_tabline,
+        hl = hl_tabline_sel,
       }
     end,
     left_sep = { ' ', hl = hl_tabline_fill },
@@ -61,7 +61,7 @@ local tabline = {
     label = function(winid)
       return {
         win_label(winid),
-        hl = hl_tabline,
+        hl = 'Tabline',
       }
     end,
     left_sep = { ' ', hl = hl_tabline_fill },
