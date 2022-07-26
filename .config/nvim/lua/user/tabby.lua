@@ -52,7 +52,7 @@ local tabline = {
     label = function(winid)
       return {
         win_label(winid, true),
-        hl = hl_tabline_sel,
+        hl = 'TabLineSel'
       }
     end,
     left_sep = { ' ', hl = hl_tabline_fill },

@@ -50,6 +50,7 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim") -- interactive cheatsheet
 	--use "morhetz/gruvbox" -- colortheme
   use("NLKNguyen/papercolor-theme") -- colortheme
+  use ('Mofiqul/dracula.nvim') -- color theme
 	use("terrortylor/nvim-comment") -- comments
 	use({
 		"nvim-treesitter/nvim-treesitter",
