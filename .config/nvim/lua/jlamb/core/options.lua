@@ -1,4 +1,5 @@
--- Encoding
+vim.cmd("let g:netrw_liststyle = 3")
+
 local options = {
 	fileencoding = "utf-8",
 
@@ -16,6 +17,7 @@ local options = {
 
 	-- Stop word wrapping
 	wrap = false,
+  backspace = "indent,eol,start",
 
 	-- Hide buffers
 	hidden = true,
@@ -50,9 +52,9 @@ local options = {
 	conceallevel = 0,
 
 	-- Search
-	hlsearch = true,
 	ignorecase = true,
 	smartcase = true,
+	hlsearch = true,
 	showmatch = true,
 
 	-- Misc
@@ -60,11 +62,6 @@ local options = {
 	confirm = true,
 }
 
-vim.opt.shortmess:append("c")
-
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
-
--- Italicise comments
-vim.highlight.create("Comment", { cterm = "italic", gui = "italic" }, false)
