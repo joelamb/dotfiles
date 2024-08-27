@@ -56,12 +56,10 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -95,7 +93,8 @@ alias python='python3'
 
 alias gb='git branch | tee'
 
-export FZF_DEFAULT_OPTS='--layout=reverse'
+export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
@@ -117,3 +116,7 @@ autoload -Uz _zi
 zicompinit # <- https://z.digitalclouds.dev/docs/guides/commands
 
 set -o vi
+
+eval "$(mcfly init zsh)"
+
+[ -f "/Users/joelamb/.ghcup/env" ] && source "/Users/joelamb/.ghcup/env" # ghcup-envsource ${HOME}/.ghcup/env
